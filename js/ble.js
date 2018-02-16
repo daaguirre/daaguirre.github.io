@@ -89,6 +89,7 @@ var initialPidFetch = true;
         ])
         .then( () => {
             connectionStatus(1);
+<<<<<<< HEAD
 /*             if (typeof onConnect == 'function') {
                 onConnect();
             } */

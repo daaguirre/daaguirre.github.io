@@ -95,9 +95,9 @@ u.trigger = function (el, type, data) {
     el.dispatchEvent(evt);
 };
 
-u.prepareEvent = function (evt) {
-    evt.preventDefault();
-    return evt.type.match(/^touch/) ? evt.changedTouches : evt;
+u.prepareEvent = function (evt) { 
+	if (evt.target.className == 'front' || evt.target.className == 'back') evt.preventDefault(); 
+	return evt.type.match(/^touch/) ? evt.changedTouches : evt; 
 };
 
 u.getScroll = function () {

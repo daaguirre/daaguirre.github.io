@@ -459,26 +459,7 @@ joystickRight.on('end', function(evt, data) {
         select('#debug-rollRight').innerHTML = '<b>Roll</b>: ' + roll.toFixed(0)  + '&deg; ' + rollDir;
         //console.log(data);
     }
-})on('touchcancel', function(event) {
-// Set values to zero
-    exCharVal[output.rollRight] = 0;
-    exCharVal[output.rollLeft] = 0;
-    exCharVal[output.pitchForward] = 0;
-    exCharVal[output.pitchBackward] = 0;
-
-    // Try to send data
-    if(writePermission) {
-        exWrite();
-    }
-
-    // console.log(exCharVal);
-
-    if(printPosition) {
-        select('#debug-pitchRight').innerHTML = '<b>Pitch</b>: 0';
-        select('#debug-rollRight').innerHTML = '<b>Roll</b>: 0';
-        //console.log(data);
-    }
-});
+})
 
 /*  Updating PID values live  */
 

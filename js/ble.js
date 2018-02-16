@@ -82,7 +82,7 @@ var initialPidFetch = true;
             .then(characteristic => {
                 exChar = characteristic
                 console.log('EX characteristic ok');
-            //})
+            })
             .catch(error => {
                 console.log("Failed in EX char init", error);
             })

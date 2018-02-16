@@ -170,7 +170,7 @@ function onConnect() {
     // Connect event is fired when connected to the device, but before the
     // GATT server is connected and characteristics discovered. Uses timeout to avoid
     // errors when trying to read from the quadcopter before those steps are finished
-    setTimeout(function() {
+/*     setTimeout(function() {
 
             // Read all the original PID values from the quadcopter and
             // store to originalPidData array
@@ -180,7 +180,7 @@ function onConnect() {
                 // Display battery level read from the quadcopter
                 batteryLevel(rxCharVal[0]);
             })
-    }, 1000);
+    }, 1000); */
 }
 
 // Get PID values from quadcopter

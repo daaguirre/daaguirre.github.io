@@ -89,9 +89,9 @@ var initialPidFetch = true;
         ])
         .then( () => {
             connectionStatus(1);
-/*             if (typeof onConnect == 'function') {
+            if (typeof onConnect == 'function') {
                 onConnect();
-            } */
+            }
         })
 
         // Print errors  to console

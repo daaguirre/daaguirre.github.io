@@ -82,16 +82,16 @@ var initialPidFetch = true;
             .then(characteristic => {
                 exChar = characteristic
                 console.log('EX characteristic ok');
-            })
+            //})
             .catch(error => {
                 console.log("Failed in EX char init", error);
             })
         ])
         .then( () => {
             connectionStatus(1);
-            if (typeof onConnect == 'function') {
-                onConnect();
-            }
+            //if (typeof onConnect == 'function') {
+            //    onConnect();
+            //}
         })
 
         // Print errors  to console

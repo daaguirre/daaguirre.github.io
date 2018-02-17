@@ -473,6 +473,7 @@ addListener('#button-reset', 'click', resetPid);
 addListener('#button-stop', 'click', stopQuad);
 
 
+
 // Function to be called on connect to set input properties
 function inputPidData() {
 

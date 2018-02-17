@@ -383,7 +383,7 @@ joystickLeft.on('end', function(evt, data) {
 var joystickRight = nipplejs.create({
     zone: document.getElementById('joystick-right'),
     mode: 'static',
-    position: {right: '-40px', top: '40%'},
+    position: {right: '100px', top: '40%'},
     color: 'rgba(196, 2, 2, 1)',
     size: 150,
     restOpacity: 0.9

@@ -210,7 +210,7 @@ function readPidData() {
 var joystickLeft = nipplejs.create({
     zone: select('#joystick-left'),
     mode: 'static',
-    position: {left: '30%', top: '40%'},
+    position: {left: '10%', top: '40%'},
     color: 'rgb(25, 66, 103)',
     size: 150,
     restOpacity: 0.95
@@ -383,7 +383,7 @@ joystickLeft.on('end', function(evt, data) {
 var joystickRight = nipplejs.create({
     zone: document.getElementById('joystick-right'),
     mode: 'static',
-    position: {right: '30%', top: '40%'},
+    position: {right: '10%', top: '40%'},
     color: 'rgba(196, 2, 2, 1)',
     size: 150,
     restOpacity: 0.9

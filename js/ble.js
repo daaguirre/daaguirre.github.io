@@ -34,7 +34,7 @@ var initialPidFetch = true;
 
     // Searching for Bluetooth devices that match the filter criteria
     console.log('Requesting Bluetooth Device...');
-    navigator.bluetooth.requestDevice()
+    navigator.bluetooth.requestDevice(options)
     .then(device => {
         bluetoothDevice = device;
 

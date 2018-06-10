@@ -30,8 +30,82 @@ var initialPidFetch = true;
     'use strict'
 
     // Options for Bluetooth devices to show in Chooser UI
-    //var options = { filters:[{ services: [ eddystoneServiceUUID ]}] };
+    var options = { filters:[{ services: [ eddystoneServiceUUID ]}] };
+    
+    // Searching for Bluetooth devices that match the filter criteria
+    console.log('Requesting Bluetooth Device...');
+    navigator.bluetooth.requestDevice(options)
+    .then(device => {
+        bluetoothDevice = device;
 
+        // Adding event listener to detect loss of connection
+        bluetoothDevice.addEventListener('gattserverdisconnected', disconnectHandler);
+        console.log('> Found ' + bluetoothDevice.name);
+        console.log('Connecting to GATT Server...');
+
+        // Connect to GATT server
+        return bluetoothDevice.gatt.connect()
+        .then(gattServer => {
+            mainServer = gattServer;
+            console.log('> Bluetooth Device connected: ');
+        });
+    })
+
+    // When matching device is found and selected, get the main service
+    .then(server => {
+        console.log('Getting main Service...');
+        return mainServer.getPrimaryService(serviceUUID);
+    })
+    .then(service => {
+
+        // Storing the main service object globally for easy access from other functions
+        mainService = service;
+        console.log('> serviceReturn: ' + service);
+
+        // Get characteristics and call handler functions for both
+        return Promise.all([
+            service.getCharacteristic(txCharUUID)
+            .then(characteristic => {
+                txChar = characteristic;
+                console.log('TX characteristic ok');
+            }),
+            service.getCharacteristic(rxCharUUID)
+            .then(characteristic => {
+                rxChar = characteristic;
+                characteristic.addEventListener('characteristicvaluechanged', rxHandleNotification);
+                console.log('RX characteristic ok');
+                characteristic.startNotifications();
+            })
+            .catch(error => {
+                console.log("Failed in RX char init", error);
+            }),
+            service.getCharacteristic(exCharUUID)
+            .then(characteristic => {
+                exChar = characteristic
+                console.log('EX characteristic ok');
+            })
+            .catch(error => {
+                console.log("Failed in EX char init", error);
+            })
+        ])
+        .then( () => {
+            connectionStatus(1);
+            if (typeof onConnect == 'function') {
+                onConnect();
+            }
+        })
+
+        // Print errors  to console
+        .catch(error => {
+            console.log('>' + error);
+        });
+    })
+
+    // Print errors  to console
+    .catch(error => {
+        console.log('Argh! ' + error);
+    });
+  
     // Searching for Bluetooth devices that match the filter criteria
     console.log('Requesting Bluetooth Device...');
 

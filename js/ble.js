@@ -5,6 +5,7 @@
 
 // Using the same UUID Nordic UART service and belonging characteristics
 // (UUID changed to avoid listing all kinds of devices that cannot be controlled)
+var eddystoneServiceUUID = 'a3c87500-8ed3-4bdf-8a39-a01bebede295';
 var serviceUUID = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
 var txCharUUID = '6e400002-b5a3-f393-e0a9-e50e24dcca9e';
 var rxCharUUID = '6e400003-b5a3-f393-e0a9-e50e24dcca9e';
@@ -29,7 +30,7 @@ var initialPidFetch = true;
     'use strict'
 
     // Options for Bluetooth devices to show in Chooser UI
-    var options = { filters:[{ services: [ serviceUUID ]}] };
+    var options = { filters:[{ services: [ eddystoneServiceUUID ]}] };
 
     // Searching for Bluetooth devices that match the filter criteria
     console.log('Requesting Bluetooth Device...');

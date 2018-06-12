@@ -28,10 +28,10 @@ var initialPidFetch = true;
 // Function for connecting to quadcopter
  function connect() {
     'use strict'
-
+   
     // Options for Bluetooth devices to show in Chooser UI
     var options = { filters:[{ services: [ eddystoneServiceUUID, serviceUUID ]}] };
-    
+    console.log('Looking for Eddystone and UART Services');
     // Searching for Bluetooth devices that match the filter criteria
     console.log('Requesting Bluetooth Device...');
     navigator.bluetooth.requestDevice(options)

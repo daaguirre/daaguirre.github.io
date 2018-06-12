@@ -30,8 +30,11 @@ var initialPidFetch = true;
     'use strict'
    
     // Options for Bluetooth devices to show in Chooser UI
-    var options = { filters:[{ services: [ eddystoneServiceUUID ]}] };
-    console.log('Searching for Eddystone Services');
+    var options = { 
+     filters:[{ services: [ eddystoneServiceUUID ]}],
+     optionalServices:[ serviceUUID ]
+    };
+    console.log('UART Service as Optional Service');
     // Searching for Bluetooth devices that match the filter criteria
     console.log('Requesting Bluetooth Device...');
     navigator.bluetooth.requestDevice(options)
